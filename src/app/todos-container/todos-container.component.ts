@@ -1,22 +1,22 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Todo } from 'todos/todo';
+import { Observable } from 'rxjs';
+import { TodosService } from '../todos.service';
 
 @Component({
   selector: 'todos',
   template: `
-    <todo *ngFor="let todo of todos"
+    <todo *ngFor="let todo of todos | async"
         [item] = "todo"></todo>
   `
 })
 export class TodosContainerComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'ui middle aligned selection list';
-  todos: Todo[] = [];
+  todos: Observable<Todo>;
 
-  constructor() {
-    this.todos.push( { title: 'hello 1', description: 'Description of todo', completed: false });
-    this.todos.push( { title: 'hello 2', description: 'Description of todo', completed: false });
-    this.todos.push( { title: 'hello 3', description: 'Description of todo', completed: false });
-  }
+  constructor(private todoService: TodosService) {
+    this.todos = todoService.getTodos();
+   }
 
   ngOnInit() {
   }

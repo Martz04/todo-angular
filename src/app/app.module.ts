@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodosContainerComponent } from './todos-container/todos-container.component';
 import { TodosItemComponent } from './todos-item/todos-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TodoServiceInjectables } from './todos.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { TodosItemComponent } from './todos-item/todos-item.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [TodoServiceInjectables],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
