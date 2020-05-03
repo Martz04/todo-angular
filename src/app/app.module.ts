@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TodosContainerComponent } from './todos-container/todos-container.component';
+import { TodosItemComponent } from './todos-item/todos-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodosContainerComponent,
+    TodosItemComponent
   ],
   imports: [
     BrowserModule,
